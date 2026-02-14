@@ -166,8 +166,6 @@ subscription {
 }
 ```
 
-#### [Postman Collection URL](https://.postman.co/workspace/My-Workspace~0949c8f6-aa6f-43c2-831b-2aee72aa5223/collection/699057213d8727c51d3056e3?action=share&creator=42708205)
-
 ## License
 
 This project is licensed under the terms specified in the LICENSE file.
