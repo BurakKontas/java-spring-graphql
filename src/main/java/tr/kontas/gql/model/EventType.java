@@ -1,8 +1,6 @@
-package tr.kontas.gql.entities;
+package tr.kontas.gql.model;
 
 public enum EventType {
     BOOK_CREATED,
-    BOOK_UPDATED,
-    ORDER_CREATED,
-    NOTIFICATION
+    ORDER_CREATED
 }

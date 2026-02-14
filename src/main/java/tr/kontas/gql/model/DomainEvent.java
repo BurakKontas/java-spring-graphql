@@ -1,13 +1,13 @@
-package tr.kontas.gql.entities;
+package tr.kontas.gql.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class DomainEvent<T> {
-    private final EventType type;
-    private final String userId;
-    private final String groupId;
-    private final T payload;
+    private EventType type;
+    private String userId;
+    private String groupId;
+    private T payload;
 }

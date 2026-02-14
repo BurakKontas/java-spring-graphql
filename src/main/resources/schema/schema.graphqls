@@ -1,6 +1,17 @@
-type Book {
+scalar DateTime
+directive @auth(roles: [String]) on FIELD_DEFINITION
+
+type Author {
     id: ID!
-    title: String!
+    name: String!
+}
+
+type Book @key(fields: "id") {
+    id: ID!
+    title: String
+    authorId: String
+    author: Author
+    createdAt: DateTime!
 }
 
 type Order {
@@ -10,9 +21,7 @@ type Order {
 
 enum EventType {
     BOOK_CREATED
-    BOOK_UPDATED
     ORDER_CREATED
-    NOTIFICATION
 }
 
 union EventPayload = Book | Order
@@ -29,15 +38,12 @@ type Query {
 }
 
 type Mutation {
-    addBook(userId: String!, groupId: String, title: String!): Book!
-    createOrder(userId: String!, amount: Float!): Order!
+    addBook(userId: String!, title: String!, authorId: String!): Book! @auth(roles: ["ADMIN"])
+    createOrder(userId: String!, amount: Float!): Order! @auth(roles: ["ADMIN"])
+    addAuthor(id: String!, name: String): Author! @auth(roles: ["ADMIN"])
 }
 
 type Subscription {
-    bookAdded(userId: String, groupId: String): Book!
-    events(
-        userId: String,
-        groupId: String,
-        types: [EventType!]
-    ): Event!
+    bookAdded(userId: String): Book!
+    events(types: [EventType!]): Event! @auth(roles: ["ADMIN"])
 }

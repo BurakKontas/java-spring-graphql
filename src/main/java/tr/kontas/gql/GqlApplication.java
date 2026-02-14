@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class GqlApplication {
-
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(GqlApplication.class, args);
     }
-
 }
