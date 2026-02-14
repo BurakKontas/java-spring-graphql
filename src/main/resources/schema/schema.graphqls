@@ -1,0 +1,43 @@
+type Book {
+    id: ID!
+    title: String!
+}
+
+type Order {
+    id: ID!
+    amount: Float!
+}
+
+enum EventType {
+    BOOK_CREATED
+    BOOK_UPDATED
+    ORDER_CREATED
+    NOTIFICATION
+}
+
+union EventPayload = Book | Order
+
+type Event {
+    type: EventType!
+    userId: String
+    groupId: String
+    payload: EventPayload!
+}
+
+type Query {
+    books: [Book!]!
+}
+
+type Mutation {
+    addBook(userId: String!, groupId: String, title: String!): Book!
+    createOrder(userId: String!, amount: Float!): Order!
+}
+
+type Subscription {
+    bookAdded(userId: String, groupId: String): Book!
+    events(
+        userId: String,
+        groupId: String,
+        types: [EventType!]
+    ): Event!
+}
