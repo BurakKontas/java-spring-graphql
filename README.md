@@ -1,4 +1,4 @@
-# CRM GraphQL API
+# Java Spring Boot GraphQL API Example
 
 A Spring Boot application that provides a GraphQL API for managing books, authors, and orders with real-time subscription support.
 
